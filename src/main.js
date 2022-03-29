@@ -67,6 +67,7 @@ const nearleyLexer = function(regexps) {
      */
     reset: function(data, info) { 
       this.buffer = data || '';
+      this.currentPos = 0;
       let line = info ? info.line : 1;
       this.tokens = lexer(data, line);
       return this;
