@@ -51,6 +51,7 @@ const buildLexer = (regexps) => {
   return {validTokens, lexer};
 };
 
+
 const nearleyLexer = function(regexps) {
   debugger;
   const {validTokens, lexer} = buildLexer(regexps);
@@ -79,7 +80,8 @@ const nearleyLexer = function(regexps) {
       if (this.currentPos < this.tokens.length)
         return this.tokens[this.currentPos++];
       else if (this.currentPos == this.tokens.length) {
-        let token = this.tokens[this.currentPos-1];
+        let token = {}; 
+        Object.assign(token, this.tokens[this.currentPos-1]);
         token.type = "EOF"
         this.currentPos++; //So that next time will return undefined
         return token; 
